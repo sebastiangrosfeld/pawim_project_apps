@@ -1,0 +1,103 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = PwaClient
+build_property.RootNamespace = PwaClient
+build_property.ProjectDir = C:\Users\Sebastian\PAWIM_PROJECT\pwa\PwaClient\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Sebastian\PAWIM_PROJECT\pwa\PwaClient
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/ChangePassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhbmdlUGFzc3dvcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/ComputerList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHV0ZXJMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/GpuList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3B1TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/NewComputerForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3Q29tcHV0ZXJGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/NewGpuForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3R3B1Rm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/NewRamForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3UmFtRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/RamList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmFtTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/UpdateComputerForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlQ29tcHV0ZXJGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/UpdateGpuForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlR3B1Rm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Pages/UpdateRamForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlUmFtRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-wdjqrs1qhf
+
+[C:/Users/Sebastian/PAWIM_PROJECT/pwa/PwaClient/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-rgt9tu7504

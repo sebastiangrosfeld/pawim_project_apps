@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Octopus",
+        "ramCapacity": 79,
+        "memoryRate": 1388
+    },
+    {
+        "name": "Japaneseseabass",
+        "ramCapacity": 7,
+        "memoryRate": 3017
+    },
+    {
+        "name": "Milt",
+        "ramCapacity": 9,
+        "memoryRate": 2382
+    },
+    {
+        "name": "Fireflysquid",
+        "ramCapacity": 11,
+        "memoryRate": 1568
+    },
+    {
+        "name": "Orientclam",
+        "ramCapacity": 87,
+        "memoryRate": 3719
+    },
+    {
+        "name": "Eel",
+        "ramCapacity": 74,
+        "memoryRate": 2184
+    },
+    {
+        "name": "Alaskanpinkshrimp",
+        "ramCapacity": 121,
+        "memoryRate": 3840
+    },
+    {
+        "name": "Seabream",
+        "ramCapacity": 26,
+        "memoryRate": 3848
+    },
+    {
+        "name": "Dottedgizzardshad",
+        "ramCapacity": 34,
+        "memoryRate": 1999
+    },
+    {
+        "name": "Botanshrimp",
+        "ramCapacity": 28,
+        "memoryRate": 3742
+    },
+    {
+        "name": "Whitetrevally",
+        "ramCapacity": 52,
+        "memoryRate": 4264
+    },
+    {
+        "name": "Japanesestyle-chunkyomelette",
+        "ramCapacity": 83,
+        "memoryRate": 4271
+    },
+    {
+        "name": "Salmonroe",
+        "ramCapacity": 34,
+        "memoryRate": 3884
+    },
+    {
+        "name": "Bloodyclam",
+        "ramCapacity": 69,
+        "memoryRate": 3529
+    },
+    {
+        "name": "Trout",
+        "ramCapacity": 95,
+        "memoryRate": 1714
+    },
+    {
+        "name": "Rosyseabass",
+        "ramCapacity": 4,
+        "memoryRate": 3473
+    },
+    {
+        "name": "Mackerel",
+        "ramCapacity": 124,
+        "memoryRate": 4329
+    },
+    {
+        "name": "Hornedturban",
+        "ramCapacity": 7,
+        "memoryRate": 1855
+    },
+    {
+        "name": "Tuna",
+        "ramCapacity": 98,
+        "memoryRate": 3988
+    },
+    {
+        "name": "Abalone",
+        "ramCapacity": 70,
+        "memoryRate": 4012
+    }
+]

@@ -1,0 +1,112 @@
+@page "/computers"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize]
+
+<PageTitle>Computers</PageTitle>
+
+<h1>Computers List</h1>
+
+@if (computers == null)
+{
+    <div class="text-center">
+  <div class="spinner-border m-5" style="width: 10rem; height: 10rem;" role="status">
+    <span class="sr-only">.</span>
+  </div>
+</div>
+}
+else
+{
+    <button class="btn btn-success" @onclick="() => NavigateToCreate()" disabled=@isOffline>Create Computer</button>
+    <button class="btn btn-danger"@onclick="() => DeleteAll()" disabled=@isOffline>Delete All</button>
+
+    <div style="overflow-x: scroll;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Enclosure Name</th>
+                <th>CPU Name</th>
+                <th>RAM Name</th>
+                <th>Hard Disk Capacity [GB]</th>
+                <th>GPU Name</th>
+                <th>Power Supply [W]</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var computer in computers)
+                {
+                    <tr>
+                        <td>@computer.Name</td>
+                        <td>@computer.Type</td>
+                        <td>@computer.EnclosureName</td>
+                        <td>@computer.CpuName</td>
+                        <td>@computer.Ram.Name</td>
+                        <td>@computer.HardDiskCapacity</td>
+                        <td>@computer.Gpu.Name</td>
+                        <td>@computer.PowerSupply</td>
+                        <td>@computer.Price</td>
+                        <td>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-3" @onclick="() => NavigateToUpdate(computer.Name)" disabled=@isOffline>Update</button>
+                                <button class="btn btn-danger"
+                                    @onclick="() => DeleteComputer(computer.Name)" disabled=@isOffline>Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<Computer>? computers;
+    
+    private bool isOffline = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try {
+        computers = await HttpClient.GetFromJsonAsync<List<Computer>>(Constants.ComputersUrl);
+            }
+            catch (Exception ex) {
+                isOffline = true;
+                if(ex.Message.Contains("401"))
+                {
+                    computers = null;
+                    return;
+                }
+                computers = await HttpClient.GetFromJsonAsync<List<Computer>>("sample-data/computers.json");
+                Console.WriteLine($"Wystąpił błąd podczas próby pobrania danych: {ex.Message}");
+            }
+    }
+
+    private void NavigateToUpdate(string name)
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/computers/update/{name}");
+    }
+
+    private void NavigateToCreate()
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/computers/create");
+    }
+
+    private async Task DeleteComputer(string name)
+    {
+        await HttpClient.DeleteAsync(Constants.ComputersUrl + "/" + name);
+        computers = await HttpClient.GetFromJsonAsync<List<Computer>>(Constants.ComputersUrl);
+    }
+
+    private async Task DeleteAll()
+    {
+        await HttpClient.DeleteAsync(Constants.ComputersUrl + "/all");
+        computers = await HttpClient.GetFromJsonAsync<List<Computer>>(Constants.ComputersUrl);
+    }
+}

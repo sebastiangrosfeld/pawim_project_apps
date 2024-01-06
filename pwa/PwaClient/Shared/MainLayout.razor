@@ -1,0 +1,85 @@
+﻿@using Blazored.LocalStorage;
+@using System.Security.Claims;
+@inherits LayoutComponentBase
+
+@inject ILocalStorageService LocalStorageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+<div class="page">
+    @* <div class="sidebar">
+        <NavMenu />
+    </div> *@
+
+    <main>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/computers">Computers App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/computers">Computers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/rams">Rams</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gpus">Gpus</a>
+        </li>
+      </ul>
+      <form class="d-flex ml-2" role="search">
+        <AuthorizeView>
+                <Authorized>
+
+                    <div>
+                        @context.User.Identity.Name
+                    </div>
+                    <a class="nav-link me-2" href="/change-password">Change Password</a>
+                    <a class="nav-link" href="#" @onclick="Logout">Logout</a>
+                </Authorized>
+                <NotAuthorized>
+                    <a class="nav-link me-2" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                </NotAuthorized>
+            </AuthorizeView>
+      </form>
+    </div>
+  </div>
+</nav>
+        @* <div class="top-row px-4">
+
+            <AuthorizeView>
+                <Authorized>
+
+                    <div>
+                        @context.User.Identity.Name
+                    </div>
+                    <a href="/change-password">Change Password</a>
+                    <a href="#" @onclick="Logout">Logout</a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                </NotAuthorized>
+            </AuthorizeView>
+
+        </div> *@
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    private async Task Logout()
+    {
+        await LocalStorageService.RemoveItemAsync("authToken");
+        await LocalStorageService.RemoveItemAsync("googleToken");
+        await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        NavigationManager.NavigateTo("/login");
+    }
+}

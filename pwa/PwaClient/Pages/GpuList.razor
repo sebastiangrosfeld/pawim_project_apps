@@ -1,0 +1,98 @@
+@page "/gpus"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize]
+
+<PageTitle>Gpus</PageTitle>
+
+<h1>Gpus List</h1>
+
+@if (gpus == null)
+{
+    <div class="text-center">
+  <div class="spinner-border m-5" style="width: 10rem; height: 10rem;" role="status">
+    <span class="sr-only">.</span>
+  </div>
+</div>
+}
+else
+{
+    <button class="btn btn-success" @onclick="() => NavigateToCreate()" disabled=@isOffline>Create Gpu</button>
+    <button class="btn btn-danger"@onclick="() => DeleteAll()" disabled=@isOffline>Delete All</button>
+
+    <div style="overflow-x: scroll;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>VRam Capacity [GB]</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gpu in gpus)
+                {
+                    <tr>
+                        <td>@gpu.Name</td>
+                        <td>@gpu.VideoRamCapacity</td>
+                        <td>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-3" @onclick="() => NavigateToUpdate(gpu.Name)" disabled=@isOffline>Update</button>
+                                <button class="btn btn-danger"
+                                    @onclick="() => DeleteRam(gpu.Name)" disabled=@isOffline>Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<Gpu>? gpus;
+    
+    private bool isOffline = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try {
+        gpus = await HttpClient.GetFromJsonAsync<List<Gpu>>(Constants.GpusUrl);
+            }
+            catch (Exception ex) {
+                isOffline = true;
+                if(ex.Message.Contains("401"))
+                {
+                    gpus = null;
+                    return;
+                }
+                gpus = await HttpClient.GetFromJsonAsync<List<Gpu>>("sample-data/rams.json");
+                Console.WriteLine($"Wystąpił błąd podczas próby pobrania danych: {ex.Message}");
+            }
+    }
+
+    private void NavigateToUpdate(string name)
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/gpus/update/{name}");
+    }
+
+    private void NavigateToCreate()
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/gpus/create");
+    }
+
+    private async Task DeleteRam(string name)
+    {
+        await HttpClient.DeleteAsync(Constants.GpusUrl + "/" + name);
+        gpus = await HttpClient.GetFromJsonAsync<List<Gpu>>(Constants.GpusUrl);
+    }
+
+    private async Task DeleteAll()
+    {
+        await HttpClient.DeleteAsync(Constants.GpusUrl + "/all");
+        gpus = await HttpClient.GetFromJsonAsync<List<Gpu>>(Constants.GpusUrl);
+    }
+}

@@ -1,0 +1,99 @@
+@page "/rams/update/{name}"
+@inject HttpClient HttpClient
+
+@attribute [Authorize]
+
+<h1>Update Ram</h1>
+
+@if (isFormSubmitted)
+{
+    <p>Success</p>
+    <a class="btn btn-success" href="/rams">Go back</a>
+}
+else
+{
+    <form @onsubmit="SubmitForm">
+    <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" id="name" @bind="ramForm.Name" type="text">
+        @if (!string.IsNullOrEmpty(ramNameMsg))
+            {
+                <p class="mt-2" style="color: red;">@ramNameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="ramCapacity">Ram Capacity [GB]</label>
+        <input class="form-control" id="ramCapacity" @bind="ramForm.RamCapacity" type="text">
+        @if (!string.IsNullOrEmpty(ramCapacityMsg))
+            {
+                <p class="mt-2" style="color: red;">@ramCapacityMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="memoryRate">Memory Rate [MHz]</label>
+        <input class="form-control" id="memoryRate" @bind="ramForm.MemoryRate" type="text">
+        @if (!string.IsNullOrEmpty(memoryRateMsg))
+            {
+                <p class="mt-2" style="color: red;">@memoryRateMsg</p>
+            }
+    </div>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary" href="/rams">Cancel</a>
+            <button class="btn btn-primary ms-3" type="submit">Submit</button>
+        </div>
+    </form>
+}
+
+@code {
+    [Parameter]
+    public string? name {get; set;}
+
+    private RamForm ramForm = new RamForm();
+    private string ramNameMsg = string.Empty;
+    private string ramCapacityMsg = string.Empty;
+    private string memoryRateMsg = string.Empty;
+    private bool isInValid = false;
+    private bool isFormSubmitted = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var ram = await HttpClient.GetFromJsonAsync<Ram>(Constants.RamsUrl + "/" + name);
+        ramForm.Name = ram.Name;
+        ramForm.RamCapacity = ram.RamCapacity;
+        ramForm.MemoryRate = ram.MemoryRate;
+    }
+
+    private async Task SubmitForm()
+    {
+        if (string.IsNullOrEmpty(ramForm.Name))
+        {
+            ramNameMsg = "RAM name cannot be empty";
+            isInValid = true;
+        }
+
+        if (ramForm.RamCapacity < 1)
+        {
+            ramNameMsg = "RAM capacity must be positive";
+            isInValid = true;
+        }
+
+        if (ramForm.MemoryRate < 1)
+        {
+            ramNameMsg = "Memory rate must be positive";
+            isInValid = true;
+        }
+
+        if (isInValid == true)
+        {
+            return;
+        }
+
+        var ram = new Ram(
+            ramForm.Name,
+            ramForm.RamCapacity,
+            ramForm.MemoryRate
+            );
+        await HttpClient.PutAsJsonAsync(Constants.RamsUrl + "/" + name, ram);
+        isFormSubmitted = true;
+    }
+}

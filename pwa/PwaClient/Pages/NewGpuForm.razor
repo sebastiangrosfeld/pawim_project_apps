@@ -1,0 +1,72 @@
+@page "/gpus/create"
+@inject HttpClient HttpClient
+
+@attribute [Authorize]
+
+<h1>New Gpu</h1>
+
+@if (isFormSubmitted)
+{
+    <p>Success</p>
+    <a class="btn btn-success" href="/gpus">Go back</a>
+}
+else
+{
+    <form @onsubmit="SubmitForm">
+    <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" id="name" @bind="gpuForm.Name" type="text">
+        @if (!string.IsNullOrEmpty(gpuNameMsg))
+            {
+                <p class="mt-2" style="color: red;">@gpuNameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="vramCapacity">VRAM Capacity [GB]</label>
+        <input class="form-control" id="vramCapacity" @bind="gpuForm.VideoRamCapacity" type="text">
+        @if (!string.IsNullOrEmpty(gpuVRamMsg))
+            {
+                <p class="mt-2" style="color: red;">@gpuVRamMsg</p>
+            }
+    </div>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary" href="/gpus">Cancel</a>
+            <button class="btn btn-primary ms-3" type="submit">Submit</button>
+        </div>
+    </form>
+}
+
+@code {
+    private GpuForm gpuForm = new GpuForm();
+    private string gpuNameMsg = string.Empty;
+    private string gpuVRamMsg = string.Empty;
+    private bool isInValid = false;
+    private bool isFormSubmitted = false;
+
+    private async Task SubmitForm()
+    {
+        if(string.IsNullOrEmpty(gpuForm.Name))
+        {
+            gpuNameMsg = "GPU name cannot be empty";
+            isInValid = true;
+        }
+
+        if(gpuForm.VideoRamCapacity < 1)
+        {
+            gpuVRamMsg = "GPU VRAM capacity must be positive";
+            isInValid = true;
+        }
+
+        if(isInValid == true)
+        {
+            return;
+        }
+
+        var gpu = new Gpu(
+            gpuForm.Name,
+            gpuForm.VideoRamCapacity
+            );
+        await HttpClient.PostAsJsonAsync(Constants.GpusUrl, gpu);
+        isFormSubmitted = true;
+    }
+}

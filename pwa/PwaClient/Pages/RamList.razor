@@ -1,0 +1,103 @@
+@page "/rams"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize]
+
+<PageTitle>Rams</PageTitle>
+<div>
+<h1>Rams List</h1>
+
+@if (rams == null)
+{
+    <div class="text-center">
+  <div class="spinner-border m-5" style="width: 10rem; height: 10rem;" role="status">
+    <span class="sr-only">.</span>
+  </div>
+</div>
+}
+else
+{
+    <button class="btn btn-success" @onclick="() => NavigateToCreate()" disabled=@isOffline>Create Ram</button>
+    <button class="btn btn-danger"@onclick="() => DeleteAll()" disabled=@isOffline>Delete All</button>
+
+    <div style="overflow-x: scroll;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ram Capacity [GB]</th>
+                <th>Memory Rate [MHz]</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ram in rams)
+                {
+                    <tr>
+                        <td>@ram.Name</td>
+                        <td>@ram.RamCapacity</td>
+                        <td>@ram.MemoryRate</td>
+                        <td>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-3" @onclick="() => NavigateToUpdate(ram.Name)" disabled=@isOffline>Update</button>
+                                <button class="btn btn-danger"
+                                    @onclick="() => DeleteRam(ram.Name)" disabled=@isOffline>Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+</div>
+
+@code {
+    private List<Ram>? rams;
+    
+    private string cl = "table table-dark table-hover";
+    
+    private bool isOffline = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try {
+        rams = await HttpClient.GetFromJsonAsync<List<Ram>>(Constants.RamsUrl);
+            }
+            catch (Exception ex) {
+                isOffline = true;
+                if(ex.Message.Contains("401"))
+                {
+                    rams = null;
+                    return;
+                }
+                rams = await HttpClient.GetFromJsonAsync<List<Ram>>("sample-data/rams.json");
+                Console.WriteLine($"Wystąpił błąd podczas próby pobrania danych: {ex.Message}");
+            }
+    }
+
+    private void NavigateToUpdate(string name)
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/rams/update/{name}");
+    }
+
+    private void NavigateToCreate()
+    {
+        // Logika nawigacji, np. przekierowanie do odpowiedniego adresu URL
+        NavigationManager.NavigateTo($"/rams/create");
+    }
+
+    private async Task DeleteRam(string name)
+    {
+        await HttpClient.DeleteAsync(Constants.RamsUrl + "/" + name);
+        rams = await HttpClient.GetFromJsonAsync<List<Ram>>(Constants.RamsUrl);
+    }
+
+    private async Task DeleteAll()
+    {
+        await HttpClient.DeleteAsync(Constants.RamsUrl + "/all");
+        rams = await HttpClient.GetFromJsonAsync<List<Ram>>(Constants.RamsUrl);
+    }
+}

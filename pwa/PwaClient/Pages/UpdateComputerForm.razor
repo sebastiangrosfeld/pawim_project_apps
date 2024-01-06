@@ -1,0 +1,228 @@
+@page "/computers/update/{name}"
+@inject HttpClient HttpClient
+
+@attribute [Authorize]
+
+<h1>Update Computer</h1>
+
+@if (isFormSubmitted)
+{
+    <p>Success</p>
+    <a class="btn btn-success" href="/computers">Go back</a>
+}
+else if (rams == null || gpus == null)
+{
+    <div class="text-center">
+  <div class="spinner-border m-5" style="width: 10rem; height: 10rem;" role="status">
+    <span class="sr-only">.</span>
+  </div>
+</div>
+}
+else
+{
+    <form @onsubmit="SubmitForm">
+    <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" id="name" @bind="computerForm.Name" type="text">
+        @if (!string.IsNullOrEmpty(nameMsg))
+            {
+                <p class="mt-2" style="color: red;">@nameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="type">Type</label>
+        <input class="form-control" id="type" @bind="computerForm.Type" type="text">
+        @if (!string.IsNullOrEmpty(typeMsg))
+            {
+                <p class="mt-2" style="color: red;">@typeMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="enclosureName">Enclosure Name</label>
+        <input class="form-control" id="enclosureName" @bind="computerForm.EnclosureName" type="text">
+        @if (!string.IsNullOrEmpty(enclosureNameMsg))
+            {
+                <p class="mt-2" style="color: red;">@enclosureNameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="cpuName">CPU Name</label>
+        <input class="form-control" id="cpuName" @bind="computerForm.CpuName" type="text">
+        @if (!string.IsNullOrEmpty(cpuNameMasg))
+            {
+                <p class="mt-2" style="color: red;">@cpuNameMasg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="ramName">RAM</label>
+        <select class="form-select" id="ramName" @bind="computerForm.RamName">
+            <option value="">Choose RAM</option>
+            @foreach (var ram in rams)
+                {
+                    <option value="@ram.Name">@ram.Name</option>
+                }
+        </select>
+        @if (!string.IsNullOrEmpty(ramNameMsg))
+            {
+                <p class="mt-2" style="color: red;">@ramNameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="hardDiskCapacity">Hard Disk Capacity [GB]</label>
+        <input class="form-control" id="hardDiskCapacity" @bind="computerForm.HardDiskCapacity" type="text">
+        @if (!string.IsNullOrEmpty(hardDiskCapacityMsg))
+            {
+                <p class="mt-2" style="color: red;">@hardDiskCapacityMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="gpuName">GPU</label>
+        <select class="form-select" id="gpuName" @bind="computerForm.GpuName">
+            <option value="">Choose GPU</option>
+            @foreach (var gpu in gpus)
+                {
+                    <option value="@gpu.Name">@gpu.Name</option>
+                }
+        </select>
+        @if (!string.IsNullOrEmpty(gpuNameMsg))
+            {
+                <p class="mt-2" style="color: red;">@gpuNameMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="powerSupply">Power Supply [W]</label>
+        <input class="form-control" id="powerSupply" @bind="computerForm.PowerSupply" type="text">
+        @if (!string.IsNullOrEmpty(powerSupplyMsg))
+            {
+                <p class="mt-2" style="color: red;">@powerSupplyMsg</p>
+            }
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input class="form-control" id="price" @bind="computerForm.Price" type="text">
+        @if (!string.IsNullOrEmpty(priceMsg))
+            {
+                <p class="mt-2" style="color: red;">@priceMsg</p>
+            }
+    </div>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary" href="/computers">Cancel</a>
+            <button class="btn btn-primary ms-3" type="submit">Submit</button>
+        </div>
+    </form>
+}
+
+@code {
+    [Parameter]
+    public string? name {get; set;}
+
+    private ComputerForm computerForm = new ComputerForm();
+    private List<Ram>? rams;
+    private List<Gpu>? gpus;private string nameMsg = string.Empty;
+    private string typeMsg = string.Empty;
+    private string enclosureNameMsg = string.Empty;
+    private string cpuNameMasg = string.Empty;
+    private string ramNameMsg = string.Empty;
+    private string hardDiskCapacityMsg = string.Empty;
+    private string gpuNameMsg = string.Empty;
+    private string powerSupplyMsg = string.Empty;
+    private string priceMsg = string.Empty;
+    private bool isInValid = false;
+    private bool isFormSubmitted = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var computer = await HttpClient.GetFromJsonAsync<Computer>(Constants.ComputersUrl + "/" + name);
+        computerForm.Name = computer.Name;
+        computerForm.Type = computer.Type;
+        computerForm.EnclosureName = computer.EnclosureName;
+        computerForm.CpuName = computer.CpuName;
+        computerForm.RamName =computer.Ram.Name;
+        computerForm.HardDiskCapacity = computer.HardDiskCapacity;
+        computerForm.GpuName = computer.Gpu.Name;
+        computerForm.PowerSupply = computer.PowerSupply;
+        computerForm.Price = computer.Price;
+
+        rams = await HttpClient.GetFromJsonAsync<List<Ram>>(Constants.RamsUrl);
+        gpus = await HttpClient.GetFromJsonAsync<List<Gpu>>(Constants.GpusUrl);
+    }
+
+    private async Task SubmitForm()
+    {
+        if(string.IsNullOrEmpty(computerForm.Name))
+        {
+            nameMsg = "Name cannot be empty";
+            isInValid = true;
+        }
+
+        if(string.IsNullOrEmpty(computerForm.Type))
+        {
+            typeMsg = "Type cannot be empty";
+            isInValid = true;
+        }
+
+        if(string.IsNullOrEmpty(computerForm.EnclosureName))
+        {
+            enclosureNameMsg = "Enclosure name cannot be empty";
+            isInValid = true;
+        }
+
+        if(string.IsNullOrEmpty(computerForm.CpuName))
+        {
+            cpuNameMasg = "CPU name cannot be empty";
+            isInValid = true;
+        }
+
+        if(computerForm.RamName == "Choose RAM")
+        {
+            ramNameMsg = "RAM name cannot be empty";
+            isInValid = true;
+        }
+
+        if(computerForm.HardDiskCapacity < 1)
+        {
+            hardDiskCapacityMsg = "Hard disk capacity must be positive";
+            isInValid = true;
+        }
+
+        if(computerForm.GpuName == "Choose GPU")
+        {
+            gpuNameMsg = "GPU name cannot be empty";
+            isInValid = true;
+        }
+
+        if(computerForm.PowerSupply < 1)
+        {
+            powerSupplyMsg = "Power supply must be positive";
+            isInValid = true;
+        }
+
+        if(computerForm.Price < 1)
+        {
+            priceMsg = "Price must be positive";
+            isInValid = true;
+        }
+
+        if(isInValid == true)
+        {
+            return;
+        }
+
+        var compRam = rams.First<Ram>(ram => ram.Name == computerForm.RamName);
+        var compGpu = gpus.First<Gpu>(gpu => gpu.Name == computerForm.GpuName);
+
+        var computer = new Computer(
+            computerForm.Name,
+            computerForm.Type,
+            computerForm.EnclosureName,
+            computerForm.CpuName,
+            compRam,
+            computerForm.HardDiskCapacity,
+            compGpu,
+            computerForm.PowerSupply,
+            computerForm.Price
+            );
+        await HttpClient.PutAsJsonAsync(Constants.ComputersUrl + "/" + name, computer);
+        isFormSubmitted = true;
+    }
+}

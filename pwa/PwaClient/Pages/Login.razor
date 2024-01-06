@@ -1,0 +1,94 @@
+@page "/Login"
+@using Blazored.LocalStorage;
+@using Microsoft.AspNetCore.Components.Authorization;
+
+@inject ILocalStorageService LocalStorageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
+@inject IJSRuntime JSRuntime
+
+
+
+<EditForm Model="loginForm" OnValidSubmit="HandleLogin" style="text-align: center; margin-top: 50px;">
+
+    <h1>Login</h1>
+    <p class="mt-4">Username:</p>
+    <InputText @bind-Value="loginForm.Username" id="username"></InputText>
+    <p class="mt-2">Password:</p>
+    <InputText @bind-Value="loginForm.Password" id="password" type="password"></InputText>
+    <p></p>
+
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+    <p></p>
+
+    <button class="btn btn-secondary" @onclick="() => HandleGoogleLogin()">Login with Google</button>
+
+    <p></p>
+
+    <button class="btn btn-secondary" @onclick="() => HandleGoogleRegister()">Register with Google</button>
+
+    <p></p>
+
+    @if (!string.IsNullOrEmpty(message))
+{
+    <p style="color: red;">@message</p>
+}
+
+
+</EditForm>
+
+
+
+@code {
+
+    private AuthCredentialsForm loginForm = new AuthCredentialsForm();
+    private string message = string.Empty;
+
+    private async Task HandleLogin()
+    {
+        if(string.IsNullOrEmpty(loginForm.Username))
+        {
+            message = "Username cannot be empty";
+            return;
+        }
+
+        if(string.IsNullOrEmpty(loginForm.Password))
+        {
+            message = "Password cannot be empty";
+            return;
+        }
+
+        var result = await HttpClient.PostAsJsonAsync(Constants.LoginUrl, loginForm);
+        var jwt = await result.Content.ReadFromJsonAsync<Jwt>();
+
+
+        if (jwt == null || string.IsNullOrEmpty(jwt.Token))
+        {
+            message = "Invalid username or password";
+            return;
+        }
+
+        await LocalStorageService.SetItemAsync("authToken", jwt.Token);
+        await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        NavigationManager.NavigateTo("/computers");
+    }
+
+    private async Task HandleGoogleLogin() {
+        message = string.Empty;
+
+        var authenticationStateProvider =DotNetObjectReference.Create<AuthenticationStateProvider>(AuthenticationStateProvider);
+        await JSRuntime.InvokeVoidAsync("googleInitialize", "575661034325-p8715h6bq5iljnir3er9lq04oergv3dd.apps.googleusercontent.com", authenticationStateProvider);
+        await JSRuntime.InvokeVoidAsync("googlePrompt");
+
+        NavigationManager.NavigateTo("/computers");
+
+    }
+
+    private async Task HandleGoogleRegister() {
+        NavigationManager.NavigateTo("https://accounts.google.com/lifecycle/steps/signup/name?continue=https://myaccount.google.com?utm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&dsh=S2030311830:1704402717797227&flowEntry=SignUp&flowName=GlifWebSignIn&theme=glif&TL=AHNYTITHdvowneljBaJxl-ByA7F0znFhq-Nh03BacM4xQM2czWbB1HuE214UmNRx");
+    }
+
+}

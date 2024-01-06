@@ -1,0 +1,54 @@
+@page "/Register"
+
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+
+
+
+<EditForm Model="registerForm" OnValidSubmit="HandleRegistration" style="text-align: center; margin-top: 50px;">
+
+    <h1>Register</h1>
+
+    <p class="mt-4">Username:</p>
+    <InputText @bind-Value="registerForm.Username" id="username"></InputText>
+    <p class="mt-2">Password:</p>
+    <InputText @bind-Value="registerForm.Password" id="password" type="password"></InputText>
+    <p></p>
+    <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
+
+    <p class="mt-2" style="color: red;">@message</p>
+</EditForm>
+
+
+
+
+@code {
+    AuthCredentialsForm registerForm = new AuthCredentialsForm();
+    string message = string.Empty;
+
+    async Task HandleRegistration()
+    {
+        if(string.IsNullOrEmpty(registerForm.Username))
+        {
+            message = "Username cannot be empty";
+            return;
+        }
+
+        if(string.IsNullOrEmpty(registerForm.Password))
+        {
+            message = "Password cannot be empty";
+            return;
+        }
+
+        var result = await HttpClient.PostAsJsonAsync(Constants.RegisterUrl, registerForm);
+
+        if (!result.IsSuccessStatusCode)
+        {
+            message = "Registration failed";
+            return;
+        }
+
+        NavigationManager.NavigateTo("Login");
+    }
+}

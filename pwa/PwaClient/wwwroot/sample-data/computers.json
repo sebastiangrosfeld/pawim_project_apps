@@ -1,0 +1,362 @@
+[
+    {
+        "name": "Gloom",
+        "type": "Tangelo",
+        "enclosureName": "Carrot",
+        "cpuName": "DoctorHulk",
+        "ram": {
+            "name": "Octopus",
+            "ramCapacity": 79,
+            "memoryRate": 1388
+        },
+        "hardDiskCapacity": 171,
+        "gpu": {
+            "name": "Cooler",
+            "videoRamCapacity": 17
+        },
+        "powerSupply": 120,
+        "price": 3298
+    },
+    {
+        "name": "Pinsir",
+        "type": "Kiwiberries",
+        "enclosureName": "BokChoy",
+        "cpuName": "RedOsiris",
+        "ram": {
+            "name": "Japaneseseabass",
+            "ramCapacity": 7,
+            "memoryRate": 3017
+        },
+        "hardDiskCapacity": 2796,
+        "gpu": {
+            "name": "KingVegeta",
+            "videoRamCapacity": 20
+        },
+        "powerSupply": 707,
+        "price": 4173
+    },
+    {
+        "name": "Vileplume",
+        "type": "Papaya",
+        "enclosureName": "BeanShoots",
+        "cpuName": "GreenMorlunThirteen",
+        "ram": {
+            "name": "Milt",
+            "ramCapacity": 9,
+            "memoryRate": 2382
+        },
+        "hardDiskCapacity": 2430,
+        "gpu": {
+            "name": "Caulifla",
+            "videoRamCapacity": 7
+        },
+        "powerSupply": 532,
+        "price": 2549
+    },
+    {
+        "name": "Horsea",
+        "type": "Cavalo",
+        "enclosureName": "Kale",
+        "cpuName": "Sage",
+        "ram": {
+            "name": "Fireflysquid",
+            "ramCapacity": 11,
+            "memoryRate": 1568
+        },
+        "hardDiskCapacity": 650,
+        "gpu": {
+            "name": "SuperSaiyan2Gohan",
+            "videoRamCapacity": 17
+        },
+        "powerSupply": 353,
+        "price": 2269
+    },
+    {
+        "name": "Gengar",
+        "type": "Cavalo",
+        "enclosureName": "DriedChineseBroccoli",
+        "cpuName": "Arclight",
+        "ram": {
+            "name": "Orientclam",
+            "ramCapacity": 87,
+            "memoryRate": 3719
+        },
+        "hardDiskCapacity": 332,
+        "gpu": {
+            "name": "Guru",
+            "videoRamCapacity": 4
+        },
+        "powerSupply": 348,
+        "price": 4258
+    },
+    {
+        "name": "Geodude",
+        "type": "Pomegranate",
+        "enclosureName": "Parsnip",
+        "cpuName": "AztarThirteen",
+        "ram": {
+            "name": "Eel",
+            "ramCapacity": 74,
+            "memoryRate": 2184
+        },
+        "hardDiskCapacity": 1029,
+        "gpu": {
+            "name": "KingKai",
+            "videoRamCapacity": 6
+        },
+        "powerSupply": 674,
+        "price": 2019
+    },
+    {
+        "name": "Kakuna",
+        "type": "Sultanas",
+        "enclosureName": "RedPepper",
+        "cpuName": "CyborgAzraelClaw",
+        "ram": {
+            "name": "Alaskanpinkshrimp",
+            "ramCapacity": 121,
+            "memoryRate": 3840
+        },
+        "hardDiskCapacity": 2926,
+        "gpu": {
+            "name": "SuperSaiyan3Goku",
+            "videoRamCapacity": 18
+        },
+        "powerSupply": 479,
+        "price": 2634
+    },
+    {
+        "name": "Ninetales",
+        "type": "Pomegranate",
+        "enclosureName": "Cauliflower",
+        "cpuName": "ArmorThirteen",
+        "ram": {
+            "name": "Seabream",
+            "ramCapacity": 26,
+            "memoryRate": 3848
+        },
+        "hardDiskCapacity": 848,
+        "gpu": {
+            "name": "RyuuShenlong",
+            "videoRamCapacity": 5
+        },
+        "powerSupply": 159,
+        "price": 2880
+    },
+    {
+        "name": "Jolteon",
+        "type": "KiwiFruit",
+        "enclosureName": "Arugula",
+        "cpuName": "SupahSpawnWoman",
+        "ram": {
+            "name": "Dottedgizzardshad",
+            "ramCapacity": 34,
+            "memoryRate": 1999
+        },
+        "hardDiskCapacity": 182,
+        "gpu": {
+            "name": "Tien",
+            "videoRamCapacity": 19
+        },
+        "powerSupply": 659,
+        "price": 2847
+    },
+    {
+        "name": "Weedle",
+        "type": "Butternutpumpkin",
+        "enclosureName": "Endive",
+        "cpuName": "Dash",
+        "ram": {
+            "name": "Botanshrimp",
+            "ramCapacity": 28,
+            "memoryRate": 3742
+        },
+        "hardDiskCapacity": 208,
+        "gpu": {
+            "name": "Bardock",
+            "videoRamCapacity": 13
+        },
+        "powerSupply": 646,
+        "price": 4606
+    },
+    {
+        "name": "Exeggcute",
+        "type": "Grapes",
+        "enclosureName": "Asparagus",
+        "cpuName": "GiantPunisher",
+        "ram": {
+            "name": "Whitetrevally",
+            "ramCapacity": 52,
+            "memoryRate": 4264
+        },
+        "hardDiskCapacity": 1450,
+        "gpu": {
+            "name": "SuShenlong",
+            "videoRamCapacity": 20
+        },
+        "powerSupply": 534,
+        "price": 2365
+    },
+    {
+        "name": "Growlithe",
+        "type": "Dates",
+        "enclosureName": "DriedChineseBroccoli",
+        "cpuName": "AgentDeathlokWoman",
+        "ram": {
+            "name": "Japanesestyle-chunkyomelette",
+            "ramCapacity": 83,
+            "memoryRate": 4271
+        },
+        "hardDiskCapacity": 1417,
+        "gpu": {
+            "name": "SuperSaiyanBlueVegeta",
+            "videoRamCapacity": 12
+        },
+        "powerSupply": 891,
+        "price": 2904
+    },
+    {
+        "name": "Ivysaur",
+        "type": "Mangosteens",
+        "enclosureName": "Butternutlettuce",
+        "cpuName": "GreenWatcherGirl",
+        "ram": {
+            "name": "Salmonroe",
+            "ramCapacity": 34,
+            "memoryRate": 3884
+        },
+        "hardDiskCapacity": 2015,
+        "gpu": {
+            "name": "KidTrunks",
+            "videoRamCapacity": 11
+        },
+        "powerSupply": 161,
+        "price": 3357
+    },
+    {
+        "name": "Nidoqueen",
+        "type": "Limes",
+        "enclosureName": "GreenPepper",
+        "cpuName": "DarkDemogoblinGirl",
+        "ram": {
+            "name": "Bloodyclam",
+            "ramCapacity": 69,
+            "memoryRate": 3529
+        },
+        "hardDiskCapacity": 2095,
+        "gpu": {
+            "name": "MajinBuu",
+            "videoRamCapacity": 11
+        },
+        "powerSupply": 475,
+        "price": 3390
+    },
+    {
+        "name": "Snorlax",
+        "type": "Blackberries",
+        "enclosureName": "Cornichons",
+        "cpuName": "CyborgMetron",
+        "ram": {
+            "name": "Trout",
+            "ramCapacity": 95,
+            "memoryRate": 1714
+        },
+        "hardDiskCapacity": 1923,
+        "gpu": {
+            "name": "Yamcha",
+            "videoRamCapacity": 3
+        },
+        "powerSupply": 508,
+        "price": 3332
+    },
+    {
+        "name": "Vulpix",
+        "type": "Mandarins",
+        "enclosureName": "SwissChard",
+        "cpuName": "SpawnIX",
+        "ram": {
+            "name": "Rosyseabass",
+            "ramCapacity": 4,
+            "memoryRate": 3473
+        },
+        "hardDiskCapacity": 291,
+        "gpu": {
+            "name": "Android17",
+            "videoRamCapacity": 20
+        },
+        "powerSupply": 820,
+        "price": 4043
+    },
+    {
+        "name": "Hypno",
+        "type": "Tangelo",
+        "enclosureName": "Spinach",
+        "cpuName": "CaptainPolarisBrain",
+        "ram": {
+            "name": "Mackerel",
+            "ramCapacity": 124,
+            "memoryRate": 4329
+        },
+        "hardDiskCapacity": 1789,
+        "gpu": {
+            "name": "SanShenlong",
+            "videoRamCapacity": 6
+        },
+        "powerSupply": 349,
+        "price": 2688
+    },
+    {
+        "name": "Hitmonlee",
+        "type": "Jarrahdalepumpkin",
+        "enclosureName": "Butternutlettuce",
+        "cpuName": "Blink",
+        "ram": {
+            "name": "Hornedturban",
+            "ramCapacity": 7,
+            "memoryRate": 1855
+        },
+        "hardDiskCapacity": 2867,
+        "gpu": {
+            "name": "SuperSaiyanVegeta",
+            "videoRamCapacity": 14
+        },
+        "powerSupply": 306,
+        "price": 3105
+    },
+    {
+        "name": "Cloyster",
+        "type": "Tangelo",
+        "enclosureName": "Beetroot",
+        "cpuName": "SupahSabretooth",
+        "ram": {
+            "name": "Tuna",
+            "ramCapacity": 98,
+            "memoryRate": 3988
+        },
+        "hardDiskCapacity": 486,
+        "gpu": {
+            "name": "Launch",
+            "videoRamCapacity": 4
+        },
+        "powerSupply": 348,
+        "price": 2690
+    },
+    {
+        "name": "Venusaur",
+        "type": "GojiBerry",
+        "enclosureName": "Artichoke",
+        "cpuName": "IllustriousMartianManhunterEyes",
+        "ram": {
+            "name": "Abalone",
+            "ramCapacity": 70,
+            "memoryRate": 4012
+        },
+        "hardDiskCapacity": 1429,
+        "gpu": {
+            "name": "FutureTrunks",
+            "videoRamCapacity": 16
+        },
+        "powerSupply": 430,
+        "price": 4630
+    }
+]
