@@ -1,9 +1,10 @@
 @page "/rams/create"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 @attribute [Authorize]
 
-<h1>New Ram</h1>
+<h1>Ram Form</h1>
 
 @if (isFormSubmitted)
 {
@@ -84,5 +85,6 @@ else
             );
         await HttpClient.PostAsJsonAsync(Constants.RamsUrl, ram);
         isFormSubmitted = true;
+        NavigationManager.NavigateTo("/rams");
     }
 }

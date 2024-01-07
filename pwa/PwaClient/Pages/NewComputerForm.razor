@@ -1,9 +1,10 @@
 @page "/computers/create"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 @attribute [Authorize]
 
-<h1>New Computer</h1>
+<h1>Computer Form</h1>
 
 @if (isFormSubmitted)
 {
@@ -211,6 +212,7 @@ else
             );
         await HttpClient.PostAsJsonAsync(Constants.ComputersUrl, computer);
         isFormSubmitted = true;
+        NavigationManager.NavigateTo("/computers");
     }
 
 }

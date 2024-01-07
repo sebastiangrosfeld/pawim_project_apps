@@ -1,9 +1,10 @@
 @page "/rams/update/{name}"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 @attribute [Authorize]
 
-<h1>Update Ram</h1>
+<h1>Ram Form</h1>
 
 @if (isFormSubmitted)
 {
@@ -95,5 +96,6 @@ else
             );
         await HttpClient.PutAsJsonAsync(Constants.RamsUrl + "/" + name, ram);
         isFormSubmitted = true;
+        NavigationManager.NavigateTo("/rams");
     }
 }

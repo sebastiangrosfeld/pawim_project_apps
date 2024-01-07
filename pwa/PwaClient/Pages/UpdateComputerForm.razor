@@ -1,9 +1,10 @@
 @page "/computers/update/{name}"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 @attribute [Authorize]
 
-<h1>Update Computer</h1>
+<h1>Computer Form</h1>
 
 @if (isFormSubmitted)
 {
@@ -224,5 +225,6 @@ else
             );
         await HttpClient.PutAsJsonAsync(Constants.ComputersUrl + "/" + name, computer);
         isFormSubmitted = true;
+        NavigationManager.NavigateTo("/computers");
     }
 }

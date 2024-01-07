@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eag4wZtscxBv4VZT8RX2sesyjOUYNMi8YbiaSaIilVmMScA7mVP7w30gDr19hW9w5fWaRFXg/DxLj/iUeX7XHQ==",
+  "dgSpecHash": "oHRW/dbHvYV7Db+IBNHsStXXveQZltkl/y4yDJ89BQ7G91KDwjl2E5WSIfjjDxleT9dbQjdovqt15vaRVLaYWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sebastian\\PAWIM_PROJECT\\pwa\\PwaClient\\PwaClient.csproj",
+  "projectFilePath": "C:\\Users\\Sebastian\\PAWIM_PROJ\\pawim_project_apps\\pwa\\PwaClient\\PwaClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sebastian\\.nuget\\packages\\blazored.localstorage\\4.3.0\\blazored.localstorage.4.3.0.nupkg.sha512",
     "C:\\Users\\Sebastian\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.14\\microsoft.aspnetcore.authorization.7.0.14.nupkg.sha512",

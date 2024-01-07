@@ -1,9 +1,10 @@
 @page "/gpus/create"
 @inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
 
 @attribute [Authorize]
 
-<h1>New Gpu</h1>
+<h1>Gpu Form</h1>
 
 @if (isFormSubmitted)
 {
@@ -68,5 +69,6 @@ else
             );
         await HttpClient.PostAsJsonAsync(Constants.GpusUrl, gpu);
         isFormSubmitted = true;
+        NavigationManager.NavigateTo("/gpus");
     }
 }

@@ -2052,11 +2052,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sebastian\\PAWIM_PROJECT\\pwa\\PwaClient\\PwaClient.csproj",
+      "projectUniqueName": "C:\\Users\\Sebastian\\PAWIM_PROJ\\pawim_project_apps\\pwa\\PwaClient\\PwaClient.csproj",
       "projectName": "PwaClient",
-      "projectPath": "C:\\Users\\Sebastian\\PAWIM_PROJECT\\pwa\\PwaClient\\PwaClient.csproj",
+      "projectPath": "C:\\Users\\Sebastian\\PAWIM_PROJ\\pawim_project_apps\\pwa\\PwaClient\\PwaClient.csproj",
       "packagesPath": "C:\\Users\\Sebastian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sebastian\\PAWIM_PROJECT\\pwa\\PwaClient\\obj\\",
+      "outputPath": "C:\\Users\\Sebastian\\PAWIM_PROJ\\pawim_project_apps\\pwa\\PwaClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
