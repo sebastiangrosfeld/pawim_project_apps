@@ -62,6 +62,7 @@ Aplikacja mobilna:
 ![image](https://github.com/sebastiangrosfeld/pawim_project_apps/assets/95347931/80757e05-7134-422a-9696-54c7785d3994)
 ![image](https://github.com/sebastiangrosfeld/pawim_project_apps/assets/95347931/583a096d-0f2d-438d-9d63-faa92e64a4a9)
 ![image](https://github.com/sebastiangrosfeld/pawim_project_apps/assets/95347931/69c67861-d8ad-4383-b47c-a5362f746435)
+![image](https://github.com/sebastiangrosfeld/pawim_project_apps/assets/95347931/1feb4aa6-37f6-4c4b-a001-a1ae3dbc3611)
 
 
 
